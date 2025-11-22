@@ -1,0 +1,155 @@
+@startuml
+title Object Diagram 1 - After Character Properties H and W are modified
+
+' Document
+object "doc: Document" as doc
+
+' CharacterPropertiesFactory
+object "factory: CharacterPropertiesFactory" as factory {
+  flyweights size = 5
+}
+
+' CharacterProperties
+object "AB16: CharacterProperties" as AB16 {
+  font = "Arial"
+  color = "Black"
+  size  = 16
+}
+object "AB14: CharacterProperties" as AB14 {
+  font = "Arial"
+  color = "Black"
+  size  = 14
+}
+object "VB18: CharacterProperties" as VB18 {
+  font = "Verdana"
+  color = "Blue"
+  size  = 18
+}
+object "VR12: CharacterProperties" as VR12 {
+  font = "Verdana"
+  color = "Red"
+  size  = 12
+}
+
+' New CharacterProperty
+object "CB99: CharacterProperties" as CB99 {
+  font = "Calibri"
+  color = "Blue"
+  size  = 99
+}
+
+' Character objects for HelloWorldCS5800
+object "H: Character" as H  {
+character = 'H'
+}
+
+object "e: Character" as e  {
+character = 'e'
+}
+
+object "l: Character" as l1  {
+character = 'l'
+}
+
+object "l: Character" as l2  {
+character = 'l'
+}
+
+object "o: Character" as o1  {
+character = 'o'
+}
+
+object "W: Character" as W  {
+character = 'W'
+}
+
+object "o: Character" as o2  {
+character = 'o'
+}
+
+object "r: Character" as r  {
+character = 'r'
+}
+
+object "l: Character" as l3  {
+character = 'l'
+}
+
+object "d: Character" as d  {
+character = 'd'
+}
+
+object "C: Character" as C  {
+character = 'C'
+}
+
+object "S: Character" as S  {
+character = 'S'
+}
+
+object "5: Character" as 5  {
+character = '5'
+}
+
+object "8: Character" as 8  {
+character = '8'
+}
+
+object "0: Character" as 01  {
+character = '0'
+}
+
+object "0: Character" as 02  {
+character = '0'
+}
+
+' Document to characters
+doc *-- H
+doc *-- e
+doc *-- l1
+doc *-- l2
+doc *-- o1
+doc *-- W
+doc *-- o2
+doc *-- r
+doc *-- l3
+doc *-- d
+doc *-- C
+doc *-- S
+doc *-- 5
+doc *-- 8
+doc *-- 01
+doc *-- 02
+
+' Document to factory
+doc --> factory
+
+' Factory to flyweights
+factory *-- AB16
+factory *-- AB14
+factory *-- VB18
+factory *-- VR12
+factory *-- CB99
+
+' Characters to flyweights
+H --> CB99
+W --> CB99
+
+e --> AB14
+l1 --> AB14
+l2 --> AB14
+o1 --> AB14
+o2 --> AB14
+r --> AB14
+l3 --> AB14
+d --> AB14
+
+C --> VB18
+S --> VB18
+
+5 --> VR12
+8 --> VR12
+01 --> VR12
+02 --> VR12
+
+@enduml
